@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantbench"
+version = "0.1.0"
+description = "Benchmark LLM quantization (speed, memory, size, perplexity) on Apple Silicon with MLX"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mlx-lm>=0.32",
+    "datasets",
+    "pandas",
+    "matplotlib",
+    "typer",
+    "rich",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+quantbench = "quantbench.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
